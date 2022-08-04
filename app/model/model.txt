@@ -1,4 +1,4 @@
-#How to insert models
+### How to insert models ###
 
 1. Download all files from google drive (https://drive.google.com/drive/folders/1Qo4aksWxM6soiOZU7ctyfKHNT9_F_pij?usp=sharing)
 2. Make sure all the files are named correctly :)
