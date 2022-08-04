@@ -56,14 +56,14 @@ class Fanfic:
     return out
 
   def ferb(self):
-    output = ai2.generate(int(self.num), prompt=self.prompt, return_as_list = True)
+    output = ai2.generate(int(self.num), max_length=MAX_LENGTH, temperature=.8 * TEMP_MULTIPLIER, prompt=self.prompt, return_as_list = True)
     sent = [tokenize.sent_tokenize(i) for i in output]
     filter_sent = [j for i in sent for j in i if j.endswith(marks)]
     sentences = "\n\n".join(i for i in filter_sent)
     return sentences
 
   def sponge(self):
-    output = ai3.generate(int(self.num), prompt=self.prompt, return_as_list = True)
+    output = ai3.generate(int(self.num), max_length=MAX_LENGTH, temperature=.6 * TEMP_MULTIPLIER, prompt=self.prompt, return_as_list = True)
     sent = [tokenize.sent_tokenize(i) for i in output]
     filter_sent = [j for i in sent for j in i if j.endswith(marks)]
     sentences = "\n\n".join(i for i in filter_sent)
