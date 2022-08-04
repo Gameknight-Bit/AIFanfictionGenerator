@@ -1,98 +1,135 @@
-# Run by typing python3 main.py
-
-# **IMPORTANT:** only collaborators on the project where you run
-# this can access this web server!
-
-"""
-    Bonus points if you want to have internship at AI Camp
-    1. How can we save what user built? And if we can save them, like allow them to publish, can we load the saved results back on the home page? 
-    2. Can you add a button for each generated item at the frontend to just allow that item to be added to the story that the user is building? 
-    3. What other features you'd like to develop to help AI write better with a user? 
-    4. How to speed up the model run? Quantize the model? Using a GPU to run the model? 
-"""
-
-# import basics
-import os
-
-# import stuff for our web server
-from flask import Flask, request, redirect, url_for, render_template, session
-from utils import get_base_url
-# import stuff for our models
+from flask import Flask, render_template, redirect, url_for, request, session
 from aitextgen import aitextgen
+import random
+#import nltk
+#nltk.download('punkt')
+from nltk import tokenize
 
-# load up a model from memory. Note you may not need all of these options.
-# ai = aitextgen(model_folder="model/",
-#                tokenizer_file="model/aitextgen.tokenizer.json", to_gpu=False)
+#######################################
+## ----------- CONSTANTS ----------- ##
+#######################################
+# Feel free to change :3
 
-ai = aitextgen(model="distilgpt2", to_gpu=False)
+MAX_LENGTH = 200 #Maximum generated text length for each response
+MAX_RESPONSES = 3 #Maximum number of responses able to be generated for each prompt
+TEMP_MULTIPLIER = 1 #Temperature multiplier for the AI's response (higher = more random)
 
-# setup the webserver
-# port may need to be changed if there are multiple flask servers running on same server
-port = 12345
-base_url = get_base_url(port)
+#Phineas and Ferb
+ai2 = aitextgen(model_folder="models/PhineasAndFerbModel",
+                tokenizer_file="models/PAFaitextgen.tokenizer.json")
 
+#SpongeBob
+ai3 = aitextgen(model_folder="models/SpongebobModel",
+                tokenizer_file="models/SBaitextgen.tokenizer.json")
 
-# if the base url is not empty, then the server is running in development, and we need to specify the static folder so that the static files are served
-if base_url == '/':
-    app = Flask(__name__)
-else:
-    app = Flask(__name__, static_url_path=base_url+'static')
+#Harry Potter
+ai4 = aitextgen(model_folder="models/HarryPotterModel", 
+                tokenizer_file="models/HPaitextgen.tokenizer.json",)
 
-app.secret_key = os.urandom(64)
+#A Series of Unfortunate Events
+ai5 = aitextgen(model_folder="models/ASeriesOfUnfortunateEventsModel",
+                tokenizer_file="models/ASOUEMaitextgen.tokenizer.json",)
 
-# set up the routes and logic for the webserver
+marks = ('.', '?', '!', ']')
+class Fanfic:
+  def __init__(self,name,num,prompt):
+    self.name = name
+    self.num = num
+    self.prompt = prompt
 
+  def clean(self, textlines): #textlines = ["sentence1", "sentence2", ...] | returns ["sentence1", "sentence2", ...]
+    out = []
+    for i in range(len(textlines)):
+      res = textlines[i]
+      res = res.replace("...", ".")
+      res = res.replace(" — ", " ")
+      res = res.replace("\r\n", " ")
+      #print(res)
+      out_line = tokenize.sent_tokenize(res)
+      last_sentence = out_line[-1]
+      last_char = last_sentence[-1]
+      if not (last_char == "!" or last_char == "." or last_char == "?"):
+        #print("Char: "+last_char)
+        out_line.pop()
+      res = "".join(out_line)
+      out.append(res)
+    return out
 
-@app.route(f'{base_url}')
+  def ferb(self):
+    output = ai2.generate(int(self.num), prompt=self.prompt, return_as_list = True)
+    sent = [tokenize.sent_tokenize(i) for i in output]
+    filter_sent = [j for i in sent for j in i if j.endswith(marks)]
+    sentences = "\n\n".join(i for i in filter_sent)
+    return sentences
+
+  def sponge(self):
+    output = ai3.generate(int(self.num), prompt=self.prompt, return_as_list = True)
+    sent = [tokenize.sent_tokenize(i) for i in output]
+    filter_sent = [j for i in sent for j in i if j.endswith(marks)]
+    sentences = "\n\n".join(i for i in filter_sent)
+    return sentences
+
+  def harry(self):
+    output = ai4.generate(n=int(self.num), max_length=MAX_LENGTH, temperature=.6 * TEMP_MULTIPLIER, top_p=0.9, prompt=self.prompt, return_as_list=True)
+    output = self.clean(output)
+    return "\n\n".join(output)
+
+  def unfortunate(self):
+    output = ai5.generate(n=int(self.num), max_length=MAX_LENGTH, temperature=.8 * TEMP_MULTIPLIER, top_p=0.9, prompt=self.prompt, return_as_list=True)
+    output = self.clean(output)
+    return "\n\n".join(output)
+
+app = Flask(__name__)
+
+@app.route('/')
 def home():
-    return render_template('writer_home.html', generated=None)
+  return render_template("homepage.html")
 
-
-@app.route(f'{base_url}', methods=['POST'])
-def home_post():
-    return redirect(url_for('results'))
-
-
-@app.route(f'{base_url}/results/')
-def results():
-    if 'data' in session:
-        data = session['data']
-        return render_template('Write-your-story-with-AI.html', generated=data)
+@app.route('/prompt', methods = ['POST', 'GET'])
+def prompt():
+  if request.method == "POST":
+    page = request.form['options']
+    num = request.form['num']
+    if request.form['prompt'].strip() == "":
+      ran = random.randint(1,10)
+      if ran == 1:
+        prompt = "They "
+      elif ran == 2:
+        prompt = "He "
+      elif ran == 3:
+        prompt = "She "
+      elif ran == 4:
+        prompt = "It "
+      elif ran == 5:
+        prompt = "Among us "
+      elif ran == 6:
+        prompt = "I "
+      elif ran == 7:
+        prompt = "Wow! "
+      elif ran == 8:
+        prompt = "Gary is the best! "
+      elif ran == 9:
+        prompt = "I'm going to "
+      else:
+        prompt = "Walter White... "
     else:
-        return render_template('Write-your-story-with-AI.html', generated=None)
+      prompt = request.form['prompt']
+    user = Fanfic(page, num, prompt)
+    if page == "ferb":
+      text = user.ferb()
+    elif page == "harry":
+      text = user.harry()
+    elif page == "sponge":
+      text = user.sponge()
+    else:
+      text = user.unfortunate()
+    return render_template("demo.html", response = text, numResponses = MAX_RESPONSES)
+  else:
+    return render_template("demo.html", response = "", numResponses = MAX_RESPONSES)
 
+@app.route('/about')
+def about():
+  return render_template("info.html")
 
-@app.route(f'{base_url}/generate_text/', methods=["POST"])
-def generate_text():
-    """
-    view function that will return json response for generated text. 
-    """
-
-    prompt = request.form['prompt']
-    if prompt is not None:
-        generated = ai.generate(
-            n=1,
-            batch_size=3,
-            prompt=str(prompt),
-            max_length=300,
-            temperature=0.9,
-            return_as_list=True
-        )
-
-    data = {'generated_ls': generated}
-    session['data'] = generated[0]
-    return redirect(url_for('results'))
-
-# define additional routes here
-# for example:
-# @app.route(f'{base_url}/team_members')
-# def team_members():
-#     return render_template('team_members.html') # would need to actually make this page
-
-
-if __name__ == '__main__':
-    # IMPORTANT: change url to the site where you are editing this file.
-    website_url = 'coding.ai-camp.dev'
-
-    print(f'Try to open\n\n    https://{website_url}' + base_url + '\n\n')
-    app.run(host='0.0.0.0', port=port, debug=True)
+if __name__ == "__main__":
+  app.run(host='0.0.0.0', port=81, debug = True)

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>About the AI</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/img/favicon.png" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <!-- JS for Carousel -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Template Main CSS File -->
+  <link href="static/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Avilon - v4.7.0
+  * Template URL: https://bootstrapmade.com/avilon-bootstrap-landing-page-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <div id="logo">
+        <div class="circular--portrait">
+          <a href="/"> <img src="static/img/Prometheus.png" id="logoPic"></img></a>
+        </div>
+        <h1 id="titleText"><a href="/">Prometheus</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a> -->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto" href="/">Home</a></li>
+          <li><a class="nav-link scrollto active" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="/prompt">Demo</a></li>
+          <li><a class="nav-link scrollto" href="https://github.com/Gameknight-Bit/AIFanfictionGenerator">Github</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+
+    <div class="hero-text" data-aos="zoom-out">
+      <h1>About the AI</h1>
+      <p>How Prometheus was Built</p>
+    </div>
+
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="section-bg">
+      <div class="container-fluid" data-aos="fade-up">
+        <div class="section-header">
+          <h3 class="section-title">About Prometheus</h3>
+          <span class="section-divider"></span>
+          <p class="section-description">
+            Prometheus is a NLP model that is able to imitate the writing style and plot of certain novels and scripts<br>Let's see how it was made!
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-centered">
+        <div id="demo" class="carousel slide" data-ride="carousel" data-interval="10000">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="5" aria-label="Slide 6"></button>
+          </ol>
+          
+          <!-- The slideshow -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://miro.medium.com/max/1280/0*ftOal7fKVCNtJr4N.png" alt="Kaggle" width="1000" height="400">
+              <div class="carousel-caption">
+                <h3><b>1: Gathering Data</b></h3>
+                <p>Book data was gathered from websites like <a href="https://www.kaggle.com/">Kaggle.com</a> and scraped data from websites with BeautifulSoup4</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://repository-images.githubusercontent.com/230705617/bd4dca00-9832-11ea-8ed8-7151973ee96f" alt="aitextgen" width="1000" height="400">
+              <div class="carousel-caption">
+                <h3><b>2: Training the Model</b></h3>
+                <p>After cleaning the data with regex, the Python library "aitextgen" was used to train GPT-2</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://miro.medium.com/max/1400/1*LB10KFg5J7yK1MLxTXcLdQ.jpeg" alt="Backpropogation" width="1000" height="400">
+              <div class="carousel-caption">
+                <h3><b>2.5: How it was Trained</b></h3>
+                <p class="smaller">Each time the model trains on a line of data, the neural network "backpropagates" and tells itself what parameters to change.<br>(This results in the Model "learning")</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://images.theconversation.com/files/45159/original/rptgtpxd-1396254731.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=754&fit=clip" alt="Books" width="1000" height="400">
+              <div class="carousel-caption">
+                <h3><b>3: Re-training Data</b></h3>
+                <p class="smaller">Even after training models for <i>~100,000</i> steps, sometimes it would not meet our standards. Cleaning the data better and re-training it helped with accuracy.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://www.purdueglobal.edu/blog/online-learning/manage-organize-files-header.jpg" alt="Files" width="1000" height="400">
+              <div class="carousel-caption">
+                <h3><b>4: Saving the Model</b></h3>
+                <p>To save the parameters set from training the model, files like <i>pytorch.bin, config.json, and tokenizer.aitextgen.json</i> were saved.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="https://c.tenor.com/WbfuYVOZ7csAAAAC/omori.gif" alt="Robot" width="1000" height="400">
+              <div class="carousel-caption">
+                <h3><b>5: Sending the Output to You!</b></h3>
+                <p class="smaller">When a user clicks on the "Generate" button on <a href= {{ url_for('prompt') }}>this</a> page. Prometheus uses the saved models to finish your prompt and send it back with a <i>POST</i> request.</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Left and right controls -->
+          <button class="carousel-control-prev" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+    </section><!-- End About Section -->
+
+    <!-- ======= AI Section ======= -->
+    <section id="ai-info" class="section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h3 class="section-title">Prometheus Features</h3>
+          <span class="section-divider"></span>
+          <p class="section-description">Prometheus offers a multitude of different features</p>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6">
+            <div class="box">
+              <div class="icon"><i class="bi bi-briefcase"></i></div>
+              <h4 class="title"><a href=""><b>4 Models</b></a></h4>
+              <p class="description">With models like Harry Potter, Phineas and Ferb, Spongebob, and A Series of Unfortunate Events to choose from; your outputs are sure to be interesting!</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="box">
+              <div class="icon"><i class="bi bi-card-checklist"></i></div>
+              <h4 class="title"><a href=""><b>Sleek UI</b></a></h4>
+              <p class="description">With an easy-to-use User Interface, Prometheus makes the process of generating data straightforward!</p>
+            </div>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="box">
+              <div class="icon"><i class="bi bi-bar-chart"></i></div>
+              <h4 class="title"><a href=""><b>Highly Trained Models</b></a></h4>
+              <p class="description">With each model being trained for over 2 hours, each model outputs understandable sentences to use as ideas!<br>And GPT-2, being used as the base of each model keeps sentences structured.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- End More Features Section -->
+
+  <!-- ======= Libraries Section ======= -->
+  <section id="libraries">
+    <div class="container" data-aos="fade-up">
+      <div class="section-header">
+        <h3 class="section-title">Libraries Used</h3>
+        <span class="section-divider"></span>
+        <p class="section-description">Credits</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <a href="https://docs.aitextgen.io/"><img src="static/img/libraries/Aitextgen.png" alt="" width="400" height="200"></a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/"><img src="static/img/libraries/BS4.png" alt="" width="400" height="150"></a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="https://flask.palletsprojects.com/en/2.2.0/"><img src="static/img/libraries/Flask.png" alt="" width="400" height="200"></a>
+        </div>
+
+      </div>
+    </div>
+  </section><!-- End Clients Section -->
+
+  <section id="team">
+    <div class="container" data-aos="fade-up">
+      <div class="section-header">
+        <h3 class="section-title"><b>Meet the Team</b></h3>
+        <span class="section-divider"></span>
+        <p class="section-description">"Space Invaders" </p>
+      </div>
+
+      <div class="row" id="centerRaj">
+          <div class="imgDescription col-lg-6 col-sm-12" >
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-6" >
+                        <img src="static/img/profileIcons/Raj.png">
+                      </div>
+                      <div class="col-lg-6">
+                        <h3><b>Raj</b></h3>
+                        <p>Hi, my name is Raj Doshi. I am a Master in Data Science student at Northeastern University, Boston. I am deeply fascinated by the world of A.I, and enjoyed leading the students on this journey!</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="imgDescription col-lg-6 col-sm-12" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="static/img/profileIcons/Andrew.jpg">
+                    </div>
+                    <div class="col-lg-6">
+                        <h3><b>Andrew</b></h3>
+                        <p>I'm 16 years old, a rising junior, I like cross country and track, along with programming. I liked making the front end of the website and training each of the models.</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+            <div class="imgDescription col-lg-6 col-sm-12" >
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-6">
+                          <img src="static/img/profileIcons/Kyoko.jpg">
+                      </div>
+                      <div class="col-lg-6">
+                          <h3><b>Kyoko</b></h3>
+                          <p>Hi I'm Kyoko, a 16 year old rising junior, who loves learning new languages, making video games and long walks in the beach (but I hate sand). I enjoyed working with a team of awesome dudes who came together to make Prometheus.</p>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+      <div class="row">
+        <div class="imgDescription col-lg-6 col-sm-12" >
+          <div class="container">
+                  <div class="row">
+                      <div class="col-lg-6">
+                          <img src="static/img/profileIcons/Jay.png">
+                      </div>
+                      <div class="col-lg-6">
+                          <h3><b>Jay</b></h3>
+                          <p>I'm 16 and a rising Junior. I like to read, draw, and write. My favorite part of this process was making the logo and helping with the front end of the website.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="imgDescription col-lg-6 col-sm-12" >
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-6">
+                          <img src="static/img/profileIcons/Saket.jpg">
+                      </div>
+                      <div class="col-lg-6">
+                          <h3><b>Saket</b></h3>
+                          <p>Hi I'm Saket, a 16 year old rising junior, who likes to code that enjoyed learning HTML, CSS, and Flask along with coding the backend.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="imgDescription col-lg-6 col-sm-12" >
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-6">
+                          <img src="static/img/profileIcons/Jace.jpg">
+                      </div>
+                      <div class="col-lg-6">
+                          <h3><b>Jace</b></h3>
+                          <p>Hello, I am a 16 year old, rising Junior and love to program in Luau, run cross country, and play in the marching band. My favorite part of AI Camp was programming the backend of the website with Flask and implementing GIFs in the frontend!</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="imgDescription col-lg-6 col-sm-12" >
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-6">
+                          <img src="static/img/profileIcons/Raj.png">
+                      </div>
+                      <div class="col-lg-6">
+                          <h3><b>Shuaib</b></h3>
+                          <p>Hello I'm Shuaib, a 16 year old rising senior that likes to code and play soccer and basketball. My favorite part of AI camp was programming the front end for our website and building/training the actual AI.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    </div>
+
+
+</section><!-- End Team Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-lg-start text-center">
+          <div class="copyright">
+            &copy; Copyright <strong>Space Invaders</strong>. All Rights Reserved (I'm looking at you Gary)
+          </div>
+          <div class="credits">
+            <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Avilon
+            -->
+            Designed by <a href="/">The Gods</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-chevron-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/vendor/aos/aos.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/js/main.js"></script>
+
+</body>
+
+</html>
