@@ -1,8 +1,8 @@
 from flask import Flask, render_template, redirect, url_for, request, session
 from aitextgen import aitextgen
 import random
-#import nltk
-#nltk.download('punkt')
+import nltk
+nltk.download('punkt')
 from nltk import tokenize
 
 #######################################
